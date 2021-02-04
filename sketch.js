@@ -48,11 +48,11 @@ function setup(){
     box24=new Box(830,280,30,40);
     box25=new Box(800,240,30,40);
 
-    sling=new Slingshot(hexagon.body,{x:90,y:550});
+    sling=new Slingshot(this.hexagon,{x:90,y:550});
 }
 
 function draw(){
-    background("black");
+    background("Green");
 
     Engine.update(myEngine);
 
@@ -88,11 +88,13 @@ function draw(){
     box24.display();
     box25.display();
 
+    sling.display();
+
     
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(stone.body,{x:mouseX,y:mouseY})
+    Matter.Body.setPosition(this.hexagon,{x:mouseX,y:mouseY})
 }
 function mouseReleased(){
     sling.fly();

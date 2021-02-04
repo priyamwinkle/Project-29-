@@ -9,7 +9,7 @@ class Slingshot{
         this.bodyA=bodyA;
         this.pointB=pointB
         this.sling=Constraint.create(options);
-        World.add(world,this.sling);
+        World.add(myWorld,this.sling);
     }
     attach(body){
         this.sling.bodyA=body;
