@@ -18,6 +18,8 @@ function setup(){
 
     hexagon=Bodies.circle(10,300,10,10);
 
+    World.add(myWorld,hexagon);
+
     ground1=new Ground(415,550,250,20);
     ground2=new Ground(800,350,179,20);
 
@@ -48,7 +50,7 @@ function setup(){
     box24=new Box(830,280,30,40);
     box25=new Box(800,240,30,40);
 
-    sling=new Slingshot(this.hexagon,{x:90,y:550});
+    sling=new Slingshot(this.hexagon,{x:100,y:450});
 }
 
 function draw(){
@@ -56,7 +58,8 @@ function draw(){
 
     Engine.update(myEngine);
 
-    image(hexagonImg,100,400,60,60);
+    imageMode(CENTER);
+    image(hexagonImg,hexagon.position.x,hexagon.position.y,40,40);
     
     ground1.display();
     ground2.display();
@@ -102,14 +105,5 @@ function mouseReleased(){
 function keyPressed(){
     if(keyCode===32){
        sling1.attach(bird1.body);
-    }
-}
-function detectCollision(hexagon,box){
-    boxBodyPosition=box.body.position;
-    hexagonBodyPosition=hexagon.body.position;
-
-    var distance=dist(hexagonBodyPosition.x, hexagonBodyPosition.y, boxBodyPosition.x, boxBodyPosition.y);
-    if(distance<=box.r+stone.r){
-        Matter.Body.setStatic(box.body,false);
     }
 }
